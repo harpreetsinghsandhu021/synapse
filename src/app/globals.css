@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-surface-canvas: #eee;
+  --color-surface-panel: #fff;
+  --color-surface-subtle: #f3f3f3;
+  --color-divider: #eee;
+  --color-foreground-600: #333;
+  --color-foreground-500: #444;
+  --color-foreground-400: #555;
+  --color-foreground-300: #666;
+  --color-foreground-200: #888;
+  --color-foreground-100: #999;
+  --color-primary: #0044ff;
+  --color-white: #fff;
+  --shadow-popup: 0px 2px 4px rgba(0, 0, 0, 0.1),
+    0px 0px 0px 1px rgba(0, 0, 0, 0.05);
+}
+
+@layer {
+  body {
+    @apply bg-gray-50 overflow-hidden;
+  }
+
+  [class^="cl-internal"] {
+    font-size: 102% !important;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Webkit browsers */
+  }
+
+  /* dwsfnlewfewno */
+
+  .selection {
+    fill: transparent;
+    stroke: blue;
+    stroke-width: 1px;
+    pointer-events: none;
+  }
+
+  .selection_handle {
+    fill: white;
+    stroke: blue;
+    stroke-width: 1px;
+  }
+
+  .selection_inspector {
+    position: absolute;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-popup);
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    /* background-color: var(--color-surface-panel); */
+    user-select: none;
+  }
+
+  .selection_inspector_delete {
+    display: flex;
+    align-items: center;
+    border-left: 1px solid var(--color-divider);
+  }
+
+  .color_swatch_button,
+  .color_swatch_button_active {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .color_swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .button {
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 6px;
+    color: var(--color-foreground-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button:not(:disabled):hover,
+  .button:not(:disabled):focus {
+    color: var(--color-foreground-400);
+  }
+
+  .button:not(:disabled):active {
+    color: var(--color-foreground-600);
+  }
+
+  .button:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .button_active {
+    color: var(--color-primary);
+    background-color: var(--color-surface-subtle);
+  }
+
+  .button_active:not(:disabled):hover,
+  .button_active:not(:disabled):focus,
+  .button_active:not(:disabled):active {
+    color: var(--color-primary);
+  }
+
+  /* ndcjkdsnflwenflew */
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .left-sidebar div {
+    background: #050037 !important;
+    border-radius: 0 !important;
+  }
+
+  .cl-organizationPreview {
+    width: 100% !important;
+  }
+  .organization-switcher .cl-rootBox,
+  .organization-switcher .cl-organizationSwitcherTrigger {
+    width: 100% !important;
+  }
+  .organization-switcher span {
+    text-transform: capitalize;
+  }
+  .cl-footer,
+  .cl-organizationSwitcherPopoverFooter,
+  .cl-userButtonPopoverFooter {
+    display: none !important;
+  }
+  .cl-avatarBox {
+    height: 40px !important;
+    width: 40px !important;
+    margin: 4px 0 !important;
+
+    border-radius: 50% !important;
+  }
+  .cl-avatarBox img {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .dropdown--actions {
+    box-shadow: 0 0 0 1px #0000000c !important;
+  }
+}
