@@ -1,7 +1,7 @@
 export default {
   providers: [
     {
-      domain: "https://intimate-piglet-61.clerk.accounts.dev",
+      domain: "https://moonlit-iguana-850.convex.cloud",
       applicationID: "convex",
     },
   ],
