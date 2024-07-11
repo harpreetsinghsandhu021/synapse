@@ -84,4 +84,6 @@ const LayerComponent = memo(
   }
 );
 
+LayerComponent.displayName = "LayerComponent";
+
 export default LayerComponent;

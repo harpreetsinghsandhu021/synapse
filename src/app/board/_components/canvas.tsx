@@ -309,7 +309,15 @@ const Canvas = ({ boardId }: { boardId: string }) => {
     },
     [lastUsedColor]
   );
-
+  const startDrawing = useMutation(
+    ({ setMyPresence }, point: Point, pressure: number) => {
+      setMyPresence({
+        pencilDraft: [[point.x, point.y, pressure]],
+        penColor: lastUsedColor,
+      });
+    },
+    [lastUsedColor]
+  );
   const onPointerDown = useCallback(
     (e: React.PointerEvent) => {
       const point = pointerEventToCanvasPoint(e, camera);
@@ -325,17 +333,7 @@ const Canvas = ({ boardId }: { boardId: string }) => {
 
       setCanvasState({ origin: point, mode: CanvasMode.Pressing });
     },
-    [camera, canvasState.mode, setCanvasState]
-  );
-
-  const startDrawing = useMutation(
-    ({ setMyPresence }, point: Point, pressure: number) => {
-      setMyPresence({
-        pencilDraft: [[point.x, point.y, pressure]],
-        penColor: lastUsedColor,
-      });
-    },
-    [lastUsedColor]
+    [camera, canvasState.mode, setCanvasState, startDrawing]
   );
 
   const onLayerPointerDown = useMutation(
@@ -413,7 +411,7 @@ const Canvas = ({ boardId }: { boardId: string }) => {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [history]);
+  }, [history, deleteLayers]);
 
   return (
     <main className="h-full w-full relative bg-neutral-100 touch-none">

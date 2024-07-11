@@ -9,7 +9,7 @@ import { api } from "../../../../../convex/_generated/api";
 import NewBoardButton from "../newBoardButton";
 import BoardCard from "../boardCard";
 
-const index = ({
+const Index = ({
   orgId,
   query,
 }: {
@@ -144,4 +144,4 @@ function EmptyBoards() {
   );
 }
 
-export default index;
+export default Index;

@@ -22,7 +22,12 @@ export function Room({
     <LiveblocksProvider throttle={16} authEndpoint={"/api/liveblocks-auth"}>
       <RoomProvider
         id={roomId}
-        initialPresence={{ cursor: null, selection: [] }}
+        initialPresence={{
+          cursor: null,
+          selection: [],
+          pencilDraft: [],
+          penColor: null,
+        }}
         initialStorage={{
           layers: new LiveMap<string, LiveObject<Layer>>(),
           layerIds: new LiveList<string>([]),
