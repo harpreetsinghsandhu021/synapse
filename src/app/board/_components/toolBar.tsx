@@ -76,20 +76,7 @@ const ToolBar = ({
           }
           icon={StickyNote}
         />
-        <ToolButton
-          label="Arrow"
-          isActive={
-            canvasState.mode === CanvasMode.Inserting &&
-            canvasState.layerType === LayerType.Arrow
-          }
-          onClick={() =>
-            setCanvasState({
-              mode: CanvasMode.Inserting,
-              layerType: LayerType.Arrow,
-            })
-          }
-          icon={MoveRight}
-        />
+
         <ToolButton
           isActive={
             canvasState.mode === CanvasMode.Inserting &&
