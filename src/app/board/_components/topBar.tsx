@@ -9,8 +9,19 @@ import { useQuery } from "convex/react";
 import { useDebounceCallback } from "usehooks-ts";
 import { useApiMutation } from "@/hooks/useApiMutation";
 import { toast } from "sonner";
+import { Editor } from "tldraw";
 
-const TopBar = ({ boardId }: { boardId: string }) => {
+const TopBar = ({
+  boardId,
+  children,
+  isDarkMode,
+}: {
+  boardId: string;
+  children: React.ReactNode;
+  isDarkMode: boolean;
+}) => {
+  console.log(isDarkMode);
+
   const board = useQuery(api.board.get, { id: boardId as Id<"boards"> });
   const { mutate: update, isLoading: isLoading2 } = useApiMutation(
     api.board.update
@@ -29,10 +40,12 @@ const TopBar = ({ boardId }: { boardId: string }) => {
   );
 
   return (
-    <div className="border bg-white rounded-xl absolute top-2 left-2 w-[460px]">
+    <div
+      className={`border z-50 mt-2 ml-2  ${isDarkMode ? "bg-[#242428] border-gray-800 text-white" : "bg-white"} pointer-events-auto rounded-xl w-[35rem] `}
+    >
       <div className="py-1 px-4">
         <div className="flex items-center justify-between ">
-          <Link href={"/"}>
+          <Link className="flex items-center justify-center gap-2" href={"/"}>
             <Image
               className="inline-block"
               src={"/logo.svg"}
@@ -44,14 +57,15 @@ const TopBar = ({ boardId }: { boardId: string }) => {
           </Link>
           <span className=" inline-block scale-y-150 text-gray-300 ">|</span>
           <input
-            className="bg-transparent max-w-64 capitalize text-center w-fit outline-none"
+            className="bg-transparent max-w-28 text-base capitalize text-center w-fit outline-none"
             defaultValue={board?.title}
             onChange={handleTitleChange}
           />
           <span className="inline-block scale-y-150 text-gray-300 ">|</span>
-          <button className="bg-none p-2 hover:bg-[#E8ECFC] rounded-lg hover:text-[#314CD9]">
+          {/* <button className="bg-none p-2 hover:bg-[#E8ECFC] rounded-lg hover:text-[#314CD9]">
             <GiHamburgerMenu className="h-6 w-6" />
-          </button>
+          </button> */}
+          {children}
         </div>
       </div>
     </div>

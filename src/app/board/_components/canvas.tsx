@@ -415,7 +415,7 @@ const Canvas = ({ boardId }: { boardId: string }) => {
 
   return (
     <main className="h-full w-full relative bg-neutral-100 touch-none">
-      <TopBar boardId={boardId} />
+      {/* <TopBar boardId={boardId} /> */}
       <ToolBar
         canvasState={canvasState}
         setCanvasState={setCanvasState}

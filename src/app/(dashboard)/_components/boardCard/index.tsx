@@ -60,7 +60,7 @@ const BoardCard = ({
   };
 
   return (
-    <Link href={`/board/${id}`}>
+    <a href={`/board/${id}`}>
       <div className="group aspect-[100/127] border rounded-xl flex flex-col justify-center overflow-hidden">
         <div className="relative flex-1 bg-amber-50">
           <Image src={imageUrl} alt={title} fill className="p-4 object-fit" />
@@ -80,7 +80,7 @@ const BoardCard = ({
           disabled={false}
         />
       </div>
-    </Link>
+    </a>
   );
 };
 
