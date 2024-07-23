@@ -16,7 +16,7 @@ const Participants = () => {
   const hasMoreUsers = users.length > MAX_SHOWN_OTHER_USERS;
 
   return (
-    <div className="border bg-white rounded-xl absolute top-2 right-2 min-w-96">
+    <div className="border bg-white rounded-xl absolute top-2 left-[50%] min-w-96">
       <div className="py-1 px-4">
         <div className="flex items-center gap-2">
           {currentUser && (
@@ -83,7 +83,7 @@ const UserAvatar = ({
 
 export function ParticipantsSkeleton() {
   return (
-    <div className="absolute h-12 top-2 right-2 bg-white rounded-md p-3 flex items-center shadow-md w-[100px]" />
+    <div className="absolute h-12 top-2 left-[50%] bg-white animate-pulse rounded-md p-3 flex items-center shadow-md w-[100px]" />
   );
 }
 

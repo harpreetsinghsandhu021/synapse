@@ -1,7 +1,7 @@
 export default {
   providers: [
     {
-      domain: "https://moonlit-iguana-850.convex.cloud",
+      domain: "https://chief-urchin-16.clerk.accounts.dev",
       applicationID: "convex",
     },
   ],
