@@ -20,8 +20,6 @@ const TopBar = ({
   children: React.ReactNode;
   isDarkMode: boolean;
 }) => {
-  console.log(isDarkMode);
-
   const board = useQuery(api.board.get, { id: boardId as Id<"boards"> });
   const { mutate: update, isLoading: isLoading2 } = useApiMutation(
     api.board.update
