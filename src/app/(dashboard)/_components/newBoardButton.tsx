@@ -18,11 +18,19 @@ export default function NewBoardButton({
 }: NewBoardButtonProps) {
   const router = useRouter();
   const { mutate: create, isLoading } = useApiMutation(api.board.create);
+  const { mutate: createDocument, isLoading: isLoading2 } = useApiMutation(
+    api.documents.createDocument
+  );
 
   const handleClick = () => {
     create({ orgId, title: "Untitled" })
       .then((id) => {
         toast.success("Board created!");
+
+        createDocument({ boardId: id }).then(() =>
+          toast.success("Document created!")
+        );
+
         // router.push(`/board/${id}`);
       })
       .catch(() => toast.error("Failed to create board"));

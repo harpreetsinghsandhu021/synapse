@@ -8,6 +8,7 @@ import { useQuery } from "convex/react";
 import { api } from "../../../../../convex/_generated/api";
 import NewBoardButton from "../newBoardButton";
 import BoardCard from "../boardCard";
+import { Id } from "../../../../../convex/_generated/dataModel";
 
 const Index = ({
   orgId,
@@ -104,6 +105,9 @@ function EmptyBoards() {
   // const router = useRouter();
   const { organization } = useOrganization();
   const { mutate: create, isLoading } = useApiMutation(api.board.create);
+  const { mutate: createDocument, isLoading: isLoading2 } = useApiMutation(
+    api.documents.createDocument
+  );
 
   const handleClick = () => {
     if (!organization) return;
@@ -114,8 +118,9 @@ function EmptyBoards() {
     })
       .then((id: string) => {
         toast.success("Board created");
-        // window.location.href = `/board/${id}`;
-        // router.push(`/board/${id}`);
+        createDocument({ boardId: id as Id<"boards"> }).then(() =>
+          toast.success("Document created!")
+        );
       })
       .catch(() => {
         toast.error("Failed to create board");
