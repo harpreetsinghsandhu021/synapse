@@ -58,7 +58,7 @@ const ParticuarBoard = ({
     id: params.boardId as Id<"boards">,
   });
 
-  const CustomMenuPanel = track(() => {
+  const CustomMenuPanel = () => {
     const editor = useEditor();
 
     const { isDarkMode } = editor.user.getUserPreferences();
@@ -73,7 +73,7 @@ const ParticuarBoard = ({
         <SnapshotToolbar />
       </>
     );
-  });
+  };
 
   const NameEditor = track(() => {
     return (
