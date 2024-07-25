@@ -6,6 +6,7 @@ import { Authenticated } from "convex/react";
 import { Flowbite } from "flowbite-react";
 import { Toaster } from "@/components/ui/sonner";
 import ProgressBarProviders from "@/providers/progress-bar-provider";
+import RouteChangeListener from "./board/_components/routeChangeListener";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -27,7 +28,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <Flowbite>
           <ProgressBarProviders>
-            <ConvexClientProvider>{children}</ConvexClientProvider>
+            <ConvexClientProvider>
+              {children}
+              <RouteChangeListener />
+            </ConvexClientProvider>
           </ProgressBarProviders>
         </Flowbite>
         <Toaster className="z-50" />

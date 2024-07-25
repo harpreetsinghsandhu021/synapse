@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npx y-websocket & next dev",
-    "build": "next build",
+    "build": "npx y-websocket & next build",
     "start": "next start",
     "lint": "next lint"
   },

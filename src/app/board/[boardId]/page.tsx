@@ -86,14 +86,17 @@ const ParticuarBoard = ({
   function SnapshotToolbar() {
     const editor = useEditor();
     const { mutate, isLoading } = useApiMutation(api.documents.updateDocument);
+    localStorage.setItem("docId", `${document?._id}`);
 
     function saveDocument() {
       const { document: currDocument, session } = getSnapshot(editor.store);
 
-      mutate({
-        id: document?._id as Id<"documents">,
-        json: JSON.stringify(currDocument),
-      });
+      localStorage.setItem("document", JSON.stringify(currDocument));
+
+      // mutate({
+      //   id: document?._id as Id<"documents">,
+      //   json: JSON.stringify(currDocument),
+      // });
     }
 
     const intervalId = setInterval(saveDocument, 5000);
