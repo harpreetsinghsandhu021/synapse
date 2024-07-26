@@ -20,8 +20,6 @@ const Index = ({
     favorites?: string;
   };
 }) => {
-  console.log(query);
-
   let data = useQuery(api.boards.get, { orgId, ...query });
 
   if (!data) {
