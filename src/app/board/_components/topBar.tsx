@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import Link from "next/link";
 import { api } from "../../../../convex/_generated/api";
 import { Id } from "../../../../convex/_generated/dataModel";
