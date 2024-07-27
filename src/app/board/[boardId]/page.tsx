@@ -83,9 +83,12 @@ const ParticuarBoard = ({
             autoFocus
             onUiEvent={(e) => console.log(e)}
             onMount={(editor) => {
-              console.log(document);
-
-              loadSnapshot(editor.store, JSON.parse(document?.json as string));
+              if (document?.json) {
+                loadSnapshot(
+                  editor.store,
+                  JSON.parse(document?.json as string)
+                );
+              }
             }}
             key={params.boardId}
             store={store}
