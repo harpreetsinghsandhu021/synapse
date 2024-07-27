@@ -1,5 +1,4 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
 
 import {
   Tldraw,
@@ -12,13 +11,13 @@ import {
   TLStore,
 } from "tldraw";
 import "tldraw/tldraw.css";
-import { useYjsStore } from "./useYjsStore";
+import { useYjsStore } from "../../../hooks/useYjsStore";
 import TopBar from "../_components/topBar";
-
-import { api } from "../../../../convex/_generated/api";
-import { useQuery } from "convex/react";
-import { Id } from "../../../../convex/_generated/dataModel";
-import { useApiMutation } from "@/hooks/useApiMutation";
+import { getDocument } from "@/actions/documents";
+import { useEffect, useState } from "react";
+import { Document } from "@prisma/client";
+import SnapshotToolbar from "../_components/snapShotToolbar";
+import Loader from "@/components/auth/loader";
 
 const HOST_URL = "ws://localhost:1234";
 
@@ -34,9 +33,22 @@ const ParticuarBoard = ({
     hostUrl: HOST_URL,
   });
 
-  const document = useQuery(api.documents.getDocument, {
-    id: params.boardId as Id<"boards">,
-  });
+  const [document, setDocument] = useState<null | Document>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  async function getCurrentDocument() {
+    setIsLoading(true);
+    const document = await getDocument(params.boardId);
+    setIsLoading(false);
+
+    if (document?.status === 200) {
+      setDocument(document?.document as Document);
+    }
+  }
+
+  useEffect(() => {
+    getCurrentDocument();
+  }, []);
 
   const CustomMenuPanel = () => {
     const editor = useEditor();
@@ -50,7 +62,7 @@ const ParticuarBoard = ({
             <DefaultMenuPanel />
           </div>
         </TopBar>
-        <SnapshotToolbar />
+        <SnapshotToolbar id={document?.id} boardId={params.boardId} />
       </>
     );
   };
@@ -63,46 +75,27 @@ const ParticuarBoard = ({
     );
   });
 
-  function SnapshotToolbar() {
-    const editor = useEditor();
-    const { mutate, isLoading } = useApiMutation(api.documents.updateDocument);
-
-    function saveDocument() {
-      const { document: currDocument, session } = getSnapshot(editor.store);
-
-      mutate({
-        id: document?._id as Id<"documents">,
-        json: JSON.stringify(currDocument) as string,
-      });
-    }
-
-    const intervalId = setInterval(saveDocument, 5000);
-
-    return <></>;
-  }
-
   return (
     <>
       <div style={{ position: "fixed", inset: 0 }}>
-        {document && (
+        {!isLoading && (
           <Tldraw
             autoFocus
+            onUiEvent={(e) => console.log(e)}
             onMount={(editor) => {
-              if (document.json) {
-                loadSnapshot(
-                  editor.store,
-                  JSON.parse(document?.json as string)
-                );
-              }
+              console.log(document);
+
+              loadSnapshot(editor.store, JSON.parse(document?.json as string));
             }}
             key={params.boardId}
-            // persistenceKey={params.boardId}
             store={store}
             components={{
               SharePanel: NameEditor,
               PageMenu: null,
               DebugPanel: null,
               MenuPanel: CustomMenuPanel,
+              Spinner: Loader,
+              LoadingScreen: Loader,
             }}
           />
         )}

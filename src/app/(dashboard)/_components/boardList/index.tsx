@@ -9,6 +9,7 @@ import { api } from "../../../../../convex/_generated/api";
 import NewBoardButton from "../newBoardButton";
 import BoardCard from "../boardCard";
 import { Id } from "../../../../../convex/_generated/dataModel";
+import { createDocument } from "@/actions/documents";
 
 const Index = ({
   orgId,
@@ -105,9 +106,9 @@ function EmptyBoards() {
   // const router = useRouter();
   const { organization } = useOrganization();
   const { mutate: create, isLoading } = useApiMutation(api.board.create);
-  const { mutate: createDocument, isLoading: isLoading2 } = useApiMutation(
-    api.documents.createDocument
-  );
+  // const { mutate: createDocument, isLoading: isLoading2 } = useApiMutation(
+  //   api.documents.createDocument
+  // );
 
   const handleClick = () => {
     if (!organization) return;
@@ -116,11 +117,18 @@ function EmptyBoards() {
       title: "Untitled",
       orgId: organization.id,
     })
-      .then((id: string) => {
+      .then(async (id: string) => {
         toast.success("Board created");
-        createDocument({ boardId: id as Id<"boards"> }).then(() =>
-          toast.success("Document created!")
-        );
+
+        // await createDocument(id).then((res) => {
+        //   if (res?.status === 201) {
+        //     toast.success("Document created!");
+        //   }
+        // });
+
+        // createDocument({ boardId: id as Id<"boards"> }).then(() =>
+        //   toast.success("Document created!")
+        // );
       })
       .catch(() => {
         toast.error("Failed to create board");

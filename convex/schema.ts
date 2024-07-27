@@ -21,9 +21,4 @@ export default defineSchema({
   })
     .index("by_board_and_user", ["boardId", "userId"])
     .index("by_user", ["userId"]),
-  documents: defineTable({
-    userId: v.string(),
-    boardId: v.id("boards"),
-    json: v.string(),
-  }),
 });
