@@ -73,7 +73,7 @@ const ParticuarBoard = ({
   return (
     <>
       <div style={{ position: "fixed", inset: 0 }}>
-        {!isLoading && (
+        {!isLoading ? (
           <Tldraw
             autoFocus
             onUiEvent={(e) => console.log(e)}
@@ -96,6 +96,8 @@ const ParticuarBoard = ({
               LoadingScreen: Loader,
             }}
           />
+        ) : (
+          <Loader />
         )}
       </div>
     </>

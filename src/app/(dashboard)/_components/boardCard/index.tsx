@@ -62,7 +62,7 @@ const BoardCard = ({
   return (
     <div>
       <div className="group aspect-[100/127] border rounded-xl flex flex-col justify-center overflow-hidden">
-        <a href={`/board/${id}`} className="relative flex-1 bg-amber-50">
+        <Link href={`/board/${id}`} className="relative flex-1 bg-amber-50">
           <Image src={imageUrl} alt={title} fill className="p-4 object-fit" />
           <Overlay />
           <Actions id={id} title={title} side="right">
@@ -70,7 +70,7 @@ const BoardCard = ({
               <TbDots className="text-white w-6 h-6 opacity-75 hover:opacity-100 transition-opacity" />
             </button>
           </Actions>
-        </a>
+        </Link>
         <Footer
           isFavourite={isFavorite}
           title={title}

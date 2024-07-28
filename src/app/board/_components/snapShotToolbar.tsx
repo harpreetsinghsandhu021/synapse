@@ -20,7 +20,7 @@ export default function SnapshotToolbar({
   );
 
   useEffect(() => {
-    const intervalId = setInterval(saveDocument, 10000);
+    const intervalId = setInterval(saveDocument, 7500);
 
     return () => clearInterval(intervalId);
   }, [saveDocument]);
