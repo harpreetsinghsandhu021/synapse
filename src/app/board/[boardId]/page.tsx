@@ -11,15 +11,13 @@ import {
   TLStore,
 } from "tldraw";
 import "tldraw/tldraw.css";
-import { useYjsStore } from "../../../hooks/useYjsStore";
 import TopBar from "../_components/topBar";
 import { getDocument } from "@/actions/documents";
 import { useEffect, useState } from "react";
 import { Document } from "@prisma/client";
 import SnapshotToolbar from "../_components/snapShotToolbar";
 import Loader from "@/components/auth/loader";
-
-const HOST_URL = "ws://localhost:1234";
+import { useSyncDemo } from "@tldraw/sync";
 
 const ParticuarBoard = ({
   params,
@@ -28,10 +26,7 @@ const ParticuarBoard = ({
     boardId: string;
   };
 }) => {
-  const store = useYjsStore({
-    roomId: params.boardId,
-    hostUrl: HOST_URL,
-  });
+  const store = useSyncDemo({ roomId: params.boardId });
 
   const [document, setDocument] = useState<null | Document>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
