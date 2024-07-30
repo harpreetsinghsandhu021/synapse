@@ -1,5 +1,7 @@
 # Synapse
 
+![](./public/logo.svg)
+
 Synapse is a collaborative tool designed to enhance organizational efficiency by managing boards, tasks, and real-time collaboration.
 
 ## Features
@@ -55,5 +57,3 @@ Synapse is a collaborative tool designed to enhance organizational efficiency by
    ```bash
    npm start
    ```
-
-
