@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Synapse
 
-## Getting Started
+Synapse is a collaborative tool designed to enhance organizational efficiency by managing boards, tasks, and real-time collaboration.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- User management and organizational roles
+- Create and manage boards
+- Add, assign, and track tasks
+- Mark boards as favorites for quick access
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Dashboard
+![Dashboard](path/to/dashboard-screenshot.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Boards
+![Boards](path/to/boards-screenshot.png)
 
-## Learn More
+### Tasks
+![Tasks](path/to/tasks-screenshot.png)
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/synapse.git
+    cd synapse
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+3. Set up environment variables in a `.env` file:
+    ```env
+    DATABASE_URL=your-database-url
+    PORT=your-port
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Run database migrations:
+    ```bash
+    npm run migrate
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. Start the application:
+    ```bash
+    npm start
+    ```
+
+## Usage
+
+Access the application at `http://localhost:your-port` to manage your boards and tasks.
+
+## Bug Reporting
+
+Report issues [here](https://github.com/your-username/synapse/issues).
+
+## Contact
+
+For questions or feedback, reach out at support@synapse.com.
