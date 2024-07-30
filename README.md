@@ -56,14 +56,4 @@ Synapse is a collaborative tool designed to enhance organizational efficiency by
    npm start
    ```
 
-## Usage
 
-Access the application at `http://localhost:your-port` to manage your boards and tasks.
-
-## Bug Reporting
-
-Report issues [here](https://github.com/your-username/synapse/issues).
-
-## Contact
-
-For questions or feedback, reach out at support@synapse.com.
