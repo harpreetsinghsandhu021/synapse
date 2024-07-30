@@ -17,11 +17,11 @@ Synapse is a collaborative tool designed to enhance organizational efficiency by
 
 ### Boards
 
-![Boards](./public/screenshots/s2.png)
+![Boards](./public/screenshots/s3.png)
 
 ### Tasks
 
-![Tasks](./public/screenshots/s3.png)
+![Tasks](./public/screenshots/s4.svg)
 
 ## Installation
 
