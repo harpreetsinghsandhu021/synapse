@@ -52,9 +52,14 @@
    fill: white;
   }
   
-  .random_new{
+  .random_new {
    border: 1px solid #000;
   }
+
+  .random_three {
+   background: red;
+  }
+
   .selection_inspector {
     position: absolute;
     padding: 12px;
