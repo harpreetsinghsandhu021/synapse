@@ -49,9 +49,12 @@
   }
 
   .random {
-   fill: white
+   fill: white;
   }
-
+  
+  .random_new{
+   border: 1px solid #000;
+  }
   .selection_inspector {
     position: absolute;
     padding: 12px;
